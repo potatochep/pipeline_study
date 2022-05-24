@@ -11,10 +11,13 @@ start_time = time.time()
 
 #ssh 접속을 통해 aws ec2 접속
 server = ssh_conn(ssh_conn_info[0],'ec2-user',ssh_conn_info[1],'127.0.0.1',3306)
-
-#mysql 접속 정보
+if server is None:
+    print("Error connecting to the AWS Server")
+else:
+    print("AWS Server connecting established")
+server.start()
+#mysql 접속 정보 가져오기 / mysql 접속
 mysql_conn_info = get_mysql_connect_information()
-# ssh 접속 후 docker 환경으로 구성된 mysql 서버 접속
 conn = mysql_conn(mysql_conn_info[0],mysql_conn_info[2],mysql_conn_info[3],mysql_conn_info[1],'test_db')
 # 접속에 성공 또는 실패확인을 위한 출력
 if conn is None:

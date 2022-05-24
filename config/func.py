@@ -7,7 +7,6 @@ def ssh_conn(server_ip, user_name, key, bind_ip,bind_port):
         remote_bind_address=(bind_ip, bind_port),
         local_bind_address=(bind_ip,bind_port)
     )
-    server.start()
     return server
 
 def mysql_conn(hostname,username,password,port,database):
@@ -71,5 +70,17 @@ def s3_conn(name,access_key,secret_key):
         aws_access_key_id = access_key,
         aws_secret_access_key = secret_key
     )
-
     return s3
+
+def get_mongo_connect_information():
+    from configparser import ConfigParser
+    # mysql 접속 정보 가져오기
+    parser = ConfigParser()
+    parser.read('/Users/kimhyojin/Desktop/pipeline/config/pipeline.conf') 
+    #mysql 접속 정보
+    hostname = parser.get('mongo_config', 'hostname')
+    port = parser.get('mongo_config', 'port')
+    username = parser.get('mongo_config', 'username')
+    password = parser.get('mongo_config', 'password')
+
+    return (hostname,int(port),username,password)
