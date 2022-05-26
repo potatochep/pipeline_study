@@ -1,4 +1,3 @@
-from threading import local
 import time
 import pymysql
 import csv
