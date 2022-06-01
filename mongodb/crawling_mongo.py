@@ -92,9 +92,11 @@ for page_num in range(1,21):
     work_time(page_start_time)
 
 
+# print(actors_detail)
 actor_collection.insert_many(actors_detail)
 
 server.close()
 conn.close()
 
 work_time(start_time)
+

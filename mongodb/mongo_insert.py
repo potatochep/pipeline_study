@@ -6,6 +6,7 @@ import time
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from config.func import *
 from datetime import datetime
+
 # 시작 시간
 start_time = time.time()
 #ssh 접속 정보 가져오기 및 aws ec2 접속

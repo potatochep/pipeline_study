@@ -2,7 +2,7 @@ import boto3
 import configparser
 import os
 
-s3_file = '/Users/kimhyojin/Desktop/python_daily/python_data/asset/credit.csv'
+s3_file = '/Users/kimhyojin/Desktop/pipeline/data/actor_collection-2022-05-27_16-00-27.csv'
 
 # s3 접속 정보 불러오기
 parser = configparser.ConfigParser()
@@ -17,4 +17,4 @@ s3 = boto3.client(
     aws_secret_access_key = secret_key
 )
 
-s3.upload_file(s3_file,bucket_name,'pipeline_study/test.csv')
+s3.upload_file(s3_file,bucket_name,'pipeline_study/mongodb_export.csv')
